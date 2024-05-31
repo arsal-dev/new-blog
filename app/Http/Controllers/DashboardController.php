@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return "<h1>Welcome to the Dashboard!</h1>";
+        return view('dashboard.home');
     }
 }

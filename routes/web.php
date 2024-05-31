@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,10 @@ Route::post('register', [AuthController::class, 'store'])->name('store.user');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+Route::get('/admin', [DashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+
+Route::get('add-category', [CategoryController::class, 'add'])->middleware('auth')->name('add.category');
+
+Route::post('add-category', [CategoryController::class, 'store'])->name('store.category');
+
+Route::get('all-category', [CategoryController::class, 'all'])->name('all.category');
