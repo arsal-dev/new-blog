@@ -52,27 +52,18 @@
         </div>
     </nav>
 
-
     <div class="container mt-5">
-        <form action="{{ route('search.blog') }}" method="POST">
-            @csrf
-            <input type="search" placeholder="search blogs" name="search" class="form-control">
-        </form>
-    </div>
-
-
-    <div class="container mt-5 d-flex">
-        @foreach ($blogs as $blog)
-            <div class="card m-3" style="width: 600px">
-                <img src='{{ asset("/thumbnails/$blog->thumbnail") }}' class="card-img-top">
-                <div class="card-body">
-                    <h3 class="card-text">{{ $blog->title }}</h3>
-                    <p>{{ $blog->excerpt }}</p>
-                    <p>{{ $blog->created_at }}</p>
-                    <a href="{{ route('view.blog', $blog->id) }}" class="btn btn-primary">view</a>
-                </div>
+        <div class="card">
+            @php
+                $thumbnail = $blog[0]->thumbnail;
+            @endphp
+            <img src='{{ asset("thumbnails/$thumbnail") }}' class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ $blog[0]->body }}
+                </p>
             </div>
-        @endforeach
+        </div>
     </div>
 
 </body>
